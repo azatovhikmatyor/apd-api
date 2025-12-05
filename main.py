@@ -1,5 +1,6 @@
 from pydantic import BaseModel
 from fastapi import FastAPI
+import random
 
 
 app = FastAPI()
@@ -23,10 +24,11 @@ async def demo():
 
 @app.post("/demo")
 async def handle_demo(user_input: UserInput):
+
     return {
         "user_input": user_input,
         "output": {
-            "risk_score": 0.85,
+            "risk_score": round(random.random(), 2),
             "action": "ruxsat", # ["blok", "otp"]
             "reasons": "reasons"
         }
