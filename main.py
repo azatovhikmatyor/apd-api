@@ -23,5 +23,12 @@ async def demo():
 
 @app.post("/demo")
 async def handle_demo(user_input: UserInput):
-    return user_input
+    return {
+        "user_input": user_input,
+        "output": {
+            "risk_score": 0.85,
+            "action": "ruxsat", # ["blok", "otp"]
+            "reasons": "reasons"
+        }
+    }
 
