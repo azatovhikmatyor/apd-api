@@ -3,3 +3,5 @@ xgboost_model.joblib
 test.ipynb
 personal_profile.ipynb
 test.js
+.env
+chatbot.ipynb

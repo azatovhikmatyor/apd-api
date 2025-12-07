@@ -4,6 +4,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import random
 import pandas as pd
+from chatbot import ask_chatbot
 
 from utils import compute_behavior_risk
 
@@ -113,4 +114,13 @@ async def handle_demo(user_input: UserInput):
             "reasons": reasons
         }
     }
+
+
+class Question(BaseModel):
+    question: str
+
+@app.post('/api/ask')
+async def ask(question: Question):
+    response = ask_chatbot(question=question.question)
+    return response
 
