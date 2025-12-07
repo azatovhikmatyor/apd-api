@@ -97,7 +97,7 @@ async def handle_demo(user_input: UserInput):
     global_risk_score = model.predict_proba(x)[0][1].item() * 100
     pp_risk, reasons = compute_behavior_risk(user_input.as_personal_profile())
     pp_risk = min(100, pp_risk)
-    risk_score = global_risk_score * 0.4 + pp_risk * 0.6
+    risk_score = global_risk_score * 0.2 + pp_risk * 0.8
 
     action = "block"
     if risk_score < 40:
