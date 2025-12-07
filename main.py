@@ -98,12 +98,12 @@ async def handle_demo(user_input: UserInput):
     global_risk_score = model.predict_proba(x)[0][1].item() * 100
     pp_risk, reasons = compute_behavior_risk(user_input.as_personal_profile())
     pp_risk = min(100, pp_risk)
-    risk_score = global_risk_score * 0.2 + pp_risk * 0.8
+    risk_score = global_risk_score * 0.1 + pp_risk * 0.9
 
     action = "block"
-    if risk_score < 40:
+    if risk_score < 35:
         action = "ruxsat"
-    elif risk_score < 65:
+    elif risk_score < 60:
         action = "otp"
     
     return {
